@@ -5,7 +5,7 @@ This document contains instructions for compiling the nearcore code from beta br
 To join stakewars you need to:
 
 - Create Betanet Account at https://wallet.betanet.near.org/
-- Create a Linux Ubuntu/Debian VPS (I am using a Standard B2s (2 vcpus, 4 GiB memory) + 128 GB hard disk on Azure with Ubuntu 18.04)
+- Create a Linux VPS (I am using a Standard B2s (2 vcpus, 4 GiB memory) + 128 GB hard disk on Azure with Ubuntu 18.04). Check out the hardware requirements [here](https://docs.near.org/docs/roles/validator/hardware).
 - Pull and Compile [nearcore](https://github.com/nearprotocol/nearcore.git) beta branch
 - Run nearup using the compiled nearcore client
 - Deploy your staking pool using [Staking Pool Factory](https://github.com/near/initial-contracts/tree/master/staking-pool-factory)
