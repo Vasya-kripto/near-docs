@@ -82,6 +82,9 @@ To check logs call: `nearup logs` or `nearup logs --follow`
 
 ```
 
+You can check the logs to see if nearup started without any errors by using `nearup logs -f`
+
+
 ## Deploy a Staking Pool using Staking Pool Factory
 You can use the Staking Pool Factory UI to deployig a staking pool. Open https://near-examples.github.io/staking-pool-factory/ and login using your betanet wallet. On the Staking Pool Factory UI you will see the following fields:
 
