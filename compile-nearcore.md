@@ -16,6 +16,7 @@ This document focuses on
 - running validator node using nearup using the compiled code
 - creating and deploying and staking pool contract using Staking Pool Factory UI
 
+Please read the instructions on https://github.com/nearprotocol/stakewars for enrolling for Stakewars II and getting betanet tokens for staking.
 
 ### Install nearup
 The instructions for installing and running nearup are avaialble at https://github.com/near/nearup. Follow the steps at the provided link for installing nearup. **Do not start the nearup yet**. We will run nearup using compiled nearcore client.
@@ -112,7 +113,17 @@ Once you have entered and double checked the values click on "Create Staking Poo
 
 **Successfully created your staking pool @mutedtommy-staking-pool.stakehouse.betanet**
 
-Your newly created stake pool is avaialble for deposits and staking now.
+Your newly created stake pool is avaialble for deposits and staking now. If your staking pool has enough NEAR to get a seat as a validator it will appear as a valiadtors in approximately 6 hours (2 epochs). You can get an idea about approximate number of NEAR required to get a set as a validator by running the following command:
+
+```
+near validators next | grep "seat price"
+```
+
+Make sure the near-shell on your computer is using betanet. You can make the near-shell use betanet by:
+
+```
+export NODE_ENV=betanet
+```
 
 I am running @mutedtommy-staking-pool.stakehouse.betanet on betanet using these steps. Any suggestions to improve the document are welcome.
 
