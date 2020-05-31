@@ -111,7 +111,7 @@ This is %age of fee you will be collecting on generated rewards for running this
 
 Once you have entered and double checked the values click on "Create Staking Pool" button. It requires at least 30 Near in your account to initiate this transaction. If the contract is successfully created you will see a message like following towards the top of the page.
 
-**Successfully created your staking pool @mutedtommy-staking-pool.stakehouse.betanet**
+*Successfully created your staking pool @mutedtommy-staking-pool-2.stakehouse.betanet*
 
 Your newly created stake pool is avaialble for deposits and staking now. If your staking pool has enough NEAR to get a seat as a validator it will appear as a valiadtors in approximately 6 hours (2 epochs). You can get an idea about approximate number of NEAR required to get a set as a validator by running the following command:
 
@@ -125,14 +125,50 @@ Make sure the near-shell on your computer is using betanet. You can make the nea
 export NODE_ENV=betanet
 ```
 
-I am running @mutedtommy-staking-pool.stakehouse.betanet on betanet using these steps. Any suggestions to improve the document are welcome.
+## Depositing and Staking to the Staking Pool
 
+You can deposit and stake to the newly deployed contract using following commands.
 
+```
+near call <name of the stake pool you created earlier> deposit '{}' --accountId <wallet from where you want to deposit> --amount <amount you want to deposit>
+```
+Following is an example of how I deposited near to my staking pool from my near betanet wallet.
 
+```
+near call mutedtommy-staking-pool-2.stakehouse.betanet deposit '{}' --accountId mutedtommy.betanet --amount 3000
+```
 
+If the deposit was successfull you will see a message similar to following.
 
+```
+Scheduling a call: mutedtommy-staking-pool-2.stakehouse.betanet.deposit({}) with attached 3000 NEAR
+[mutedtommy-staking-pool-2.stakehouse.betanet]: @mutedtommy.betanet deposited 3000000000000000000000000000. New unstaked balance is 3000000000000000000000000000
+''
+```
 
+You can now stake the deposited amount using the following command
 
+```
+near call <name of the stake pool you deposited near token to> stake '{"amount": "<amount you want to stake>"}' --accountId <wallet id from where you made the deposit>
+```
 
+I used the following command to stake to my staking pool.
 
+```
+near call mutedtommy-staking-pool-2.stakehouse.betanet stake '{"amount": "3000000000000000000000000000"}' --accountId mutedtommy.betanet
+```
 
+If the staking call is successful you will see a message similar to following.
+
+```
+Scheduling a call: mutedtommy-staking-pool-2.stakehouse.betanet.stake({"amount": "3000000000000000000000000000"})
+[mutedtommy-staking-pool-2.stakehouse.betanet]: @mutedtommy.betanet staking 3000000000000000000000000000. Received 2999999996874265166646757757 new staking shares. Total 0 unstaked balance and 2999999996874390698166169529 staking shares
+[mutedtommy-staking-pool-2.stakehouse.betanet]: Contract total staked balance is 3030000000001254315194165001. Total number of shares 3029999996874389698166169529
+''
+
+```
+
+## My Staking Pool Details
+I am running @mutedtommy-staking-pool-2.stakehouse.betanet on betanet using these steps. If you wish to delegate to my staking pool please use the steps mentioned in previous section (Depositing and Staking to the Staking Pool).
+
+Any suggestions to improve the document are welcome.
