@@ -18,6 +18,8 @@ This document focuses on
 
 Please read the instructions on https://github.com/nearprotocol/stakewars for enrolling for Stakewars II and getting betanet tokens for staking.
 
+This document assumes that you are already familar with using near-shell have it configured on your local machine. It also assumes that you are familiar with process of authorising access from near-shell using `near login`. If not, please setup near-shell and get yourself familiarised with basic commands from [Near Docs](https://docs.near.org/docs/development/near-shell#__docusaurus). 
+
 ### Install nearup
 The instructions for installing and running nearup are avaialble at https://github.com/near/nearup. Follow the steps at the provided link for installing nearup. **Do not start the nearup yet**. We will run nearup using compiled nearcore client.
 
