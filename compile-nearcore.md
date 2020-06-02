@@ -26,7 +26,7 @@ The instructions for installing and running nearup are avaialble at https://gith
 Stakewars II uses the nearcore beta branch for the validator node. You can clone the nearcore repo and checkout beta branch using following git command on server CLI. 
 
 ```
-git clone -branch beta https://github.com/nearprotocol/nearcore.git
+git clone -b beta https://github.com/nearprotocol/nearcore.git
 
 ```
 After cloning the repo execute following command from CLI to move to nearcore directory for build
