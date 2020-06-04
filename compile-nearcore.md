@@ -1,6 +1,6 @@
 # Introduction
 
-This document contains instructions for compiling the nearcore code from beta branch and running a validator node using the compiled code. Running a node using this method would be a requirement for Stakewars II. The information provided in this document is meant to be followed on a Linux Ubuntu server but it may also work for other Linux versions.
+This document contains instructions for compiling the nearcore code from beta branch and running a validator node using the compiled code. Running a node using this method would be a requirement for Stakewars II. The steps provided in this document are tested on a Linux Ubuntu server (18.04) but may also work for other Linux versions.
 
 To join stakewars you need to:
 
@@ -47,12 +47,24 @@ git branch
 If you see something lile `*beta` in the output it means you have correctly checked out beta branch.
 
 ### Build nearcore
-After succefull cloning the repo and making sure you working with beta branch run the following command to start the compilation.
+You can build nearcore in couple of different ways. You can either choose to do a full build using `make release` or you can simply run the following command which only runs a single cargo build for nearcore/neard.
 
 ```
-make release
+cargo build -p neard --release
 ```
+
 This command, after successful completion, creates the nearcore client binanries in `nearcore/target/release` directory.
+
+
+The limited build above may save some build time as it avoids doing following additional builds if you use `make release` (please refer to [Makefile](https://github.com/nearprotocol/nearcore/blob/beta/Makefile) in nearcore).
+
+```
+	cargo build -p keypair-generator --release
+	cargo build -p genesis-csv-to-json --release
+	cargo build -p near-vm-runner-standalone --release
+	cargo build -p state-viewer --release
+	cargo build -p store-validator --release
+```
 
 ### Run nearup Using Compiled nearcore Client
 Now you can start the validator node on betanet using the following command
