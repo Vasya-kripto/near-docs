@@ -25,20 +25,27 @@ The instructions for installing and running nearup are avaialble at https://gith
 
 
 ### Clone nearcore Beta Branch
-Stakewars II uses the nearcore beta branch for the validator node. You can clone the nearcore repo and checkout beta branch using following git command on server CLI. 
+Stakewars II uses the nearcore beta branch for the validator node. It is recommended to clone the code in a folder identified by latest commit hash. It makes easier to revert between the versions of nearcore quickly if there are issues with a particular release.To keep the nearcore versions separate (there is a weekly release of updated code in beta branch) you can follow these steps:
+
+Export the latest commit hash in an environment variable
 
 ```
-git clone -b beta https://github.com/nearprotocol/nearcore.git
+export GITHASH=$(git ls-remote https://github.com/nearprotocol/nearcore.git HEAD | awk '{print $1}')
 
 ```
-After cloning the repo execute following command from CLI to move to nearcore directory for build
+The command above sets the GITHASH environment variable which can check using `echo $GITHASH`. We will use first 8 characters of GITHASH to name the folder. Use the folldowing command to clone the beta branch in a folder named nearcore-<first 8 characters from GITHASH>. For example if the latest commit ID is `613953cf8a0b48d82faa858dfe4ef8ab153edfd0` then the folder will be named as `nearcore-613953cf`.
 
 ```
-cd nearcore
+git clone -b beta https://github.com/nearprotocol/nearcore.git nearcore-${GITHASH:0:8}
 ```
 
-Verify that you are actually on beta branch
+After the code is successfully cloned use the `cd` command to navigate to the latest directory. The folder name provided below is just for reference. You will have to replace it with the correct name it's created with.
 
+```
+cd nearcore-613953cf
+```
+
+Once in the folder, verify that you are actually on beta branch
 
 ```
 git branch
@@ -47,6 +54,7 @@ git branch
 If you see something lile `*beta` in the output it means you have correctly checked out beta branch.
 
 ### Build nearcore
+
 You can build nearcore in couple of different ways. You can either choose to do a full build using `make release` or you can simply run the following command which only runs a single cargo build for nearcore/neard.
 
 ```
@@ -67,10 +75,10 @@ The limited build above may save some build time as it avoids doing following ad
 ```
 
 ### Run nearup Using Compiled nearcore Client
-Now you can start the validator node on betanet using the following command
+Now you can start the validator node on betanet using the following command (change the nearcore folder name according to which version you want to run. nearcore-613953cf is used just for reference in the command below).
 
 ```
-nearup betanet --nodocker --binary-path $HOME/nearcore/target/release
+nearup betanet --nodocker --binary-path $HOME/nearcore-613953cf/target/release
 ```
 When you run the nearup command for the very first time it asks for an account ID. You will see a message similar to following on command line
 
